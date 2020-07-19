@@ -1,0 +1,220 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<meta name="format-detection" content="telephone=no">
+<title>入力ページ - 車両紹介購入</title>
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/common.css" rel="stylesheet">
+<link href="css/form.css" rel="stylesheet">
+<script src="js/main.js"></script>
+<script src="https://smtpjs.com/v2/smtp.js"></script>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
+</head>
+<body>
+
+<header id="header">
+  <h1>ジェイテクト車両紹介制度<span>購入者情報入力</span></h1>
+</header>
+
+<nav id="sitemenu">
+  <div>
+    <ul>
+      <li><a href="form.html">購入者情報入力</a></li>
+      <li><a href="faq.html">よくある質問</a></li>
+      <li><a href="index.html">トップページ</a></li>
+    </ul>
+    <p><button id="closenav">メニューを閉じる</button></p>
+  </div>
+  <h2><a href="#sitemenu">サイトメニュー</a></h2>
+</nav>
+
+<section id="contents">
+  <h3>車を購入予定の方の情報を入力してください。</h3>
+  <div class="form_area">
+     <form action="thanks.html" name="form" method="post">
+      <div class="form_item">
+        <label for="form_name">お名前</label><br>
+        <input id="form_name" class="expect_string" type="text" name="name" required placeholder="例：竹島雅之">
+      </div>
+
+      <div class="form_item">
+        <label for="form_code">郵便番号</label><br>
+        <input id="form_code" class="expect_string" type="number" name="zip" onKeyUp="AjaxZip3.zip2addr(this,'','addr','addr');" required placeholder="例：4480803">
+      </div>
+
+      <div class="form_item">
+        <label for="form_address">ご住所</label><br>
+        <input id="form_address" class="expect_string" type="text" name="addr" required placeholder="例：愛知県刈谷市野田町北地蔵山1-7">
+      </div>
+
+      <div class="form_item">
+        <label for="form_tel">お電話番号</label><br>
+        <input id="form_tel" type="tel" name="tel" required placeholder="例：0566218399">
+      </div>
+
+      <div class="form_item">
+        <label for="form_area">ご希望メーカー</label><br>
+        <select id="form_area" name="area">
+          <option value="トヨタ">トヨタ</option>
+          <option value="ホンダ">ホンダ</option>
+          <option value="日産">日産</option>
+          <option value="三菱">三菱</option>
+          <option value="ダイハツ">ダイハツ</option>
+          <option value="スズキ">スズキ</option>
+          <option value="いすゞ">いすゞ</option>
+          <option value="スバル">スバル</option>
+          <option value="カワサキ">カワサキ</option>
+          <option value="日野">日野</option>
+          <option value="ＵＤトラック">ＵＤトラック</option>
+          <option value="豊田織機">豊田織機</option>
+          <option value="小松リフト">小松リフト</option>
+          <option value="三菱農機">三菱農機</option>
+          <option value="井関農機">井関農機</option>
+          <option value="コマツ">コマツ</option>
+          <option value="ヤマハ">ヤマハ</option>
+          <option value="クボタ">クボタ</option>
+        </select>
+      </div>
+
+      <div class="form_item">
+        <label for="form_model">車種</label><br>
+        <input id="form_model" class="expect_string" type="text" name="model" required placeholder="例：ノア">
+      </div>
+
+      <div class="form_item">
+        <label>区分</label><br>
+        <label for="form_sec" class="expect_touch" onclick="">
+          <input id="form_sec" type="radio" name="sec" value="新車">新車
+        </label>
+        <label for="form_sec" class="expect_touch" onclick="">
+          <input id="form_sec" type="radio" name="sec" value="二輪(新車)">二輪(新車)
+        </label>
+        <label for="form_sec" class="expect_touch" onclick="">
+          <input id="form_sec" type="radio" name="sec" value="中古車">中古車
+        </label>
+　　　　 <p>※中古車は日産車、ＵＤトラック車、いすゞ車の直営店購入のみとなります</p>
+      </div>
+
+      <div class="form_item">
+        <label for="form_model">下取車種</label><br>
+        <input id="form_model_b" class="expect_string" type="text" name="model_b" required placeholder="例：ノア">
+      </div>
+
+      <div class="form_item">
+        <label for="form_model_y">年式</label><br>
+        <input id="form_model_y" class="expect_string" type="text" name="model_y" required placeholder="例：2010">
+      </div>
+
+      <div class="form_item">
+        <label for="form_order">ご注文予定日</label><br>
+        <input id="form_order" class="expect_string" type="text" name="order" required placeholder="例：0709">
+      </div>
+
+      <div class="form_item">
+        <label>購入区分</label><br>
+        <label for="form_sec_r" class="expect_touch" onclick="">
+          <input id="form_sec_r" type="radio" name="sec_r" value="更新">更新
+        </label>
+        <label for="form_sec_r" class="expect_touch" onclick="">
+          <input id="form_sec_r" type="radio" name="sec_r" value="新規">新規
+        </label>
+        <label for="form_sec_r" class="expect_touch" onclick="">
+          <input id="form_sec_r" type="radio" name="sec_r" value="増車">増車
+        </label><br><br>
+        <label for="form_sec_r" class="expect_touch" onclick="">
+          <input id="form_sec_r" type="radio" name="sec_r" value="他メーカーからの代替">他メーカーからの代替
+        </label>
+      </div>
+
+      <div class="form_item">
+        <label>ご希望販売店</label><br>
+        <input id="form_shop" class="expect_string" type="text" name="shop" required placeholder="例：愛知トヨタ刈谷店">
+      </div>
+
+      <div class="form_item">
+        <label>電話番号</label><br>
+        <input id="form_tel" type="tel" name="tel_s" required placeholder="例：0566218399">
+      </div>
+
+      <div class="form_item">
+        <label>スタッフ名</label><br>
+        <input id="form_shops" class="expect_string" type="text" name="shops" required placeholder="例：竹島">
+      </div>
+
+      <div class="form_item">
+        <labelc>同意確認</labelc><br>
+        <input id="form_con" type="checkbox" id="check" name="con" onclick="checkValue(this)">
+        入力された個人情報を、該当メーカー及び購入先販売店へ提供すること、また、業務委託先へ必要な範囲で提供することに同意します。
+      </div>
+
+      <script type="text/javascript">
+
+             function checkValue(check){
+                 var con_submit = document.getElementById('con_submit');
+
+                 if (check.checked) {
+                     con_submit.value="この内容で送信します";
+                     con_submit.removeAttribute('disabled');
+                 } else {
+                     con_submit.value="同意確認をお願い致します";
+                     con_submit.setAttribute('disabled', 'disabled');
+                 }
+             }
+         </script>
+
+      <div class="form_submit">
+        <input class="button_link" type="submit" id="con_submit" name="submit" value="同意確認をお願い致します" disabled="disabled">
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer id="footer">
+  <p><small>Copyright Masakari all rights reserved.</small></p>
+</footer>
+
+<script type="text/javascript">
+
+function sendMail(send_text) {
+
+    Email.send(
+        "carintro2020@gmail.com",
+        <!--"jtekt_ffr1@jtekt.co.jp",-->
+        "車両紹介購入者情報",
+        send_text,
+        "imap.gmail.com",
+        "carintro2020",
+        "#car2020"
+    );
+}
+
+var btn = document.getElementById('con_submit');
+
+btn.addEventListener('click', function () {
+
+    var v01=document.form.name.value;
+    var v02=document.form.zip.value;
+    var v03=document.form.addr.value;
+    var v04=document.form.tel.value;
+    var v05=document.form.area.value;
+    var v06=document.form.model.value;
+    var v07=document.form.sec.value;
+    var v08=document.form.model_b.value;
+    var v09=document.form.model_y.value;
+    var v10=document.form.order.value;
+    var v11=document.form.sec_r.value;
+    var v12=document.form.shop.value;
+    var v13=document.form.tel_s.value;
+    var v14=document.form.shops.value;
+    var v15=v01 + "," + v02 + "," + v03 + "," + v04 + "," + v05 + "," + v06 + "," + v07 + "," + v08 + "," + v09 + "," + v10 + "," + v11 + "," + v12 + "," + v13 + "," + v14;
+
+    sendMail(v15);
+    /*alert("Sending text is finished!");*/
+})
+
+</script>
+</body>
+</html>
